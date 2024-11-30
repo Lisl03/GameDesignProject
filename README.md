@@ -1,2 +1,2 @@
-# Sarahistcool
-isometric 2D game 
+# GameDesignProject
+2D game 
