@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Puppenhaus.unity
+    guid: 283900510279c431bb7a8e637029f333
+  - enabled: 1
+    path: Assets/Scenes/Puppenhausfertig.unity
+    guid: 127bdab9a014c4180a04ab4391d10b80
+  - enabled: 1
+    path: Assets/Scenes/Room1.unity
+    guid: 10f434df17e72462f9cf6828a10a846f
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: f09406b6b8cae46b5b4385e6da11f3d5
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: ea982c22d52b14be78e8a6dd87970708
+  m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
