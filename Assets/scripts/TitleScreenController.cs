@@ -1,25 +1,25 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;  // Dieser Namespace ist notwendig für das Laden von Szenen
+using UnityEngine.SceneManagement;  // Für den Szenenwechsel
 
-public class TitleScreenController : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
-    public Animator backgroundAnimator;  // Der Animator für die Hintergrundanimation
-    public string sceneToLoad = "Room1";  // Die Szene, die geladen wird
+    public Animator animator; // Der Animator des Mädchens
+    public string sceneToLoad = "Room1"; // Name der Szene, die nach der Animation geladen wird
+    public float animationDuration = 2f; // Dauer der Einschlaf-Animation (in Sekunden)
 
-    // Diese Funktion wird aufgerufen, wenn der "Play"-Button gedrückt wird
-    public void OnPlayButtonPressed()
+    // Methode, die durch den Play-Button getriggert wird
+    public void OnPlayButtonClicked()
     {
-        Debug.Log("Play-Button wurde gedrückt!");
-        // Startet die Einschlaf-Animation
-        backgroundAnimator.SetTrigger("FallAsleep");
+        // Start der Einschlaf-Animation
+        animator.SetTrigger("FallAsleep");
 
-        // Setze einen Timer, um nach der Einschlaf-Animation die Szene zu wechseln
-        Invoke("LoadGameScene", 3f);  // 3 Sekunden Verzögerung (je nach Länge der Animation)
+        // Nach der Dauer der Einschlaf-Animation die Szene wechseln
+        Invoke("LoadRoom1", animationDuration);
     }
 
-    // Diese Funktion lädt die neue Szene
+    // Methode zum Laden der neuen Szene
     private void LoadGameScene()
     {
-        SceneManager.LoadScene(sceneToLoad);  // Lädt die angegebene Szene
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
