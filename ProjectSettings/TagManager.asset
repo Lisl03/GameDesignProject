@@ -10,19 +10,21 @@ TagManager:
   - "ZielbereichK\xFCche"
   - ZielbereichWohn
   - ZielbereichAbstell
+  - SpecialObject
+  - Cabinet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - clsoetdark
   - Water
   - UI
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - schachtel
+  - taschenlampe
   - 
   - 
   - 

@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Bewegungsgeschwindigkeit des Spielers
@@ -26,6 +24,9 @@ public class PlayerController : MonoBehaviour
         // Setze die initiale Skalierung des Charakters
         transform.localScale = new Vector3(initialScale, initialScale, 1);
         lastYPosition = transform.position.y;
+
+        // Skalierung sofort beim Start anpassen
+        AdjustScale();
     }
 
     private void Update()

@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "ra\u0308tsel ungelo\u0308st_0": -8427352272009238834
+      "ra\u0308tsel ungelo\u0308st_1": -3315805203301613424
+      "ra\u0308tsel ungelo\u0308st_2": -5600757364413398602
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
