@@ -1,15 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewInventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
-    public static NewInventoryManager Instance;
+    public static InventoryManager Instance; // Singleton Reference
+
     private List<string> inventory = new List<string>();
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void AddItem(string item)

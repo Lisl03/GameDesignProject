@@ -15,14 +15,22 @@ public class BathroomManager : MonoBehaviour
 
     public void DrainWater()
     {
+        // Make sure InventoryManager exists
+        if (InventoryManager.Instance == null)
+        {
+            Debug.LogError("InventoryManager is missing!");
+            return;
+        }
+
         if (InventoryManager.Instance.HasItem("FishingLine"))
         {
             drainPlug.SetActive(false);
             plushieStuffing.SetActive(true);
+            Debug.Log("Water drained!");
         }
         else
         {
-            DialogueManager.Instance.StartDialogue("NeedFishingLine");
+            Debug.Log("Need Fishing Line to remove the drain plug.");
         }
     }
 }
