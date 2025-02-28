@@ -1,0 +1,45 @@
+using UnityEngine;
+
+public class Interactable : MonoBehaviour
+{
+    public string interactableID;
+
+    public void Interact()
+    {
+        switch (interactableID)
+        {
+            case "Mirror":
+                ChildroomManager.Instance.TriggerMirrorDialogue();
+                break;
+            case "Diary":
+                ChildroomManager.Instance.CollectDiary();
+                Destroy(gameObject);
+                break;
+            case "RecordPlayer":
+                LivingRoomManager.Instance.TryFixRecordPlayer();
+                break;
+            case "Needle":
+                LivingRoomManager.Instance.PickUpNeedle();
+                Destroy(gameObject);
+                break;
+            case "Vinyl":
+                LivingRoomManager.Instance.PickUpVinyl();
+                Destroy(gameObject);
+                break;
+            case "Bubbles":
+                BathroomManager.Instance.PopBubble();
+                Destroy(gameObject);
+                break;
+            case "Faucet":
+                BathroomManager.Instance.DrainWater();
+                break;
+            case "Plushie":
+                PlushieManager.Instance.CheckPlushie();
+                break;
+            case "ExitDoor":
+                GameMaster.Instance.LoadNextRoom();
+                break;
+        }
+    }
+}
+
