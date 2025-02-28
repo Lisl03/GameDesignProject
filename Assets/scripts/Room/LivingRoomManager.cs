@@ -13,13 +13,13 @@ public class LivingRoomManager : MonoBehaviour
     public void PickUpNeedle()
     {
         hasNeedle = true;
-        InventoryManager.Instance.AddItem("Needle");
+        NewInventoryManager.Instance.AddItem("Needle");
     }
 
     public void PickUpVinyl()
     {
         hasVinyl = true;
-        InventoryManager.Instance.AddItem("Vinyl");
+        NewInventoryManager.Instance.AddItem("Vinyl");
     }
 
     public void TryFixRecordPlayer()

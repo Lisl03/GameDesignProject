@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public Text dialogueText;
     private Queue<string> dialogueQueue = new Queue<string>();
+
     public delegate void DialogueEndHandler();
     public event DialogueEndHandler OnDialogueEnd;
 
@@ -52,13 +53,13 @@ public class DialogueManager : MonoBehaviour
         switch (npcID)
         {
             case "Mirror":
-                return new List<string> { "Ah, du bist endlich wach.", "Diese Welt braucht dich..." };
+                return new List<string> { "Ah, you are finally awake.", "This world needs you..." };
             case "RecordPlayerMissingParts":
-                return new List<string> { "Der Plattenspieler ist kaputt...", "Vielleicht fehlt etwas?" };
+                return new List<string> { "The record player is broken...", "Something is missing?" };
             case "NeedFishingLine":
-                return new List<string> { "Der Stöpsel ist zu weit weg...", "Vielleicht kann ich etwas benutzen, um ihn zu angeln?" };
+                return new List<string> { "The drain is too far...", "Maybe I can use something to pull it?" };
             case "PlushieNotFixed":
-                return new List<string> { "Mein Plüschtier ist noch kaputt...", "Ich brauche mehr Materialien." };
+                return new List<string> { "My plushie is still broken...", "I need more materials." };
             default:
                 return new List<string> { "..." };
         }

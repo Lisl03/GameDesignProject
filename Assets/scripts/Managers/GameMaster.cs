@@ -9,7 +9,7 @@ public class GameMaster : MonoBehaviour
     public GameProgress currentProgress = GameProgress.Childroom;
 
     public float emotionalStability = 100f;
-    public InventoryManager inventory;
+    public NewInventoryManager inventory;
 
     void Awake()
     {
@@ -57,7 +57,7 @@ public class GameMaster : MonoBehaviour
                 break;
             case GameProgress.Nightmare:
                 currentProgress = GameProgress.Complete;
-                Debug.Log("Spiel abgeschlossen!");
+                Debug.Log("Game Complete!");
                 break;
         }
     }

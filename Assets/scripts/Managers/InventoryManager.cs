@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class NewInventoryManager : MonoBehaviour
 {
-    public static InventoryManager Instance;
+    public static NewInventoryManager Instance;
     private List<string> inventory = new List<string>();
 
     void Awake()
@@ -17,7 +17,7 @@ public class InventoryManager : MonoBehaviour
         if (!inventory.Contains(item))
         {
             inventory.Add(item);
-            Debug.Log(item + " wurde ins Inventar aufgenommen.");
+            Debug.Log(item + " added to inventory.");
         }
     }
 
@@ -31,7 +31,7 @@ public class InventoryManager : MonoBehaviour
         if (inventory.Contains(item))
         {
             inventory.Remove(item);
-            Debug.Log(item + " wurde aus dem Inventar entfernt.");
+            Debug.Log(item + " removed from inventory.");
         }
     }
 }

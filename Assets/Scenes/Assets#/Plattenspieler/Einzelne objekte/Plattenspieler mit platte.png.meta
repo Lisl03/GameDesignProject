@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Plattenspieler mit platte_0: -2594032864243193212
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

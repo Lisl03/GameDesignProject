@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      puppenkleid_0: -7391182577853357573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

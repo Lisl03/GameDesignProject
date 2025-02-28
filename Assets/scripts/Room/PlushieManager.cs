@@ -7,9 +7,9 @@ public class PlushieManager : MonoBehaviour
 
     public void CheckPlushie()
     {
-        hasEye = InventoryManager.Instance.HasItem("PlushieEye");
-        hasStuffing = InventoryManager.Instance.HasItem("PlushieStuffing");
-        hasSewingKit = InventoryManager.Instance.HasItem("SewingKit");
+        hasEye = NewInventoryManager.Instance.HasItem("PlushieEye");
+        hasStuffing = NewInventoryManager.Instance.HasItem("PlushieStuffing");
+        hasSewingKit = NewInventoryManager.Instance.HasItem("SewingKit");
 
         if (hasEye && hasStuffing && hasSewingKit)
         {
