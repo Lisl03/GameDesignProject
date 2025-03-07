@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pfote helle outline_0: -2950203234140660328
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

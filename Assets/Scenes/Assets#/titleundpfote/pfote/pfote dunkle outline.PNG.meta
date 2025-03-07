@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pfote dunkle outline_0: 8955182661677303815
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
