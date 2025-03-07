@@ -1,65 +1,31 @@
+using System.Collections; // WICHTIG: Fügt IEnumerator hinzu
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TaschenlampeItem : MonoBehaviour
+
+public class ButtonClickHandler : MonoBehaviour
 {
-    [Header("Szenenwechsel")]
-    public GameObject schubladeLeerImage;  // Bild der leeren Schublade (wird nach dem Klick angezeigt)
-    public string sceneName;               // Name der Szene, in die gewechselt werden soll
-
-    [Header("Item-Einstellungen")]
-    public string itemName = "Taschenlampe"; // Eindeutiger Name für das Item (wird in PlayerPrefs gespeichert)
-    public Sprite itemSprite;              // Bild des Items, das dem Inventar hinzugefügt wird
-
-    private bool isCollected = false;
+    public Button myButton;
+    public Image newImage;
 
     void Start()
     {
-        // Prüfen, ob das Item bereits eingesammelt wurde
-        if (PlayerPrefs.GetInt(itemName, 0) == 1)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        // Das Bild der leeren Schublade zu Beginn unsichtbar machen
-        if (schubladeLeerImage != null)
-        {
-            schubladeLeerImage.SetActive(false);
-        }
+        newImage.gameObject.SetActive(false);
+        myButton.onClick.AddListener(OnButtonClick);
     }
 
-    void OnMouseDown()
+    void OnButtonClick()
     {
-        if (!isCollected)
-        {
-            // Item zum Inventar hinzufügen
-            InventoryManager inventory = FindObjectOfType<InventoryManager>();
-            if (inventory != null && itemSprite != null)
-            {
-                inventory.AddItem(itemSprite);
-            }
-
-            // Speichern, dass das Item eingesammelt wurde
-            PlayerPrefs.SetInt(itemName, 1);
-            PlayerPrefs.Save();
-            isCollected = true;
-
-            // Das GameObject (das Item) deaktivieren und das Bild der leeren Schublade anzeigen
-            gameObject.SetActive(false);
-            if (schubladeLeerImage != null)
-            {
-                schubladeLeerImage.SetActive(true);
-            }
-
-            // Nach 2 Sekunden die Szene wechseln
-            Invoke("WechselSzene", 2f);
-        }
+        myButton.interactable = false;
+        newImage.gameObject.SetActive(true);
+        InventoryManager.Instance.CollectItem("Flashlight"); // Item in UI anzeigen
+        StartCoroutine(ChangeScene());
     }
 
-    void WechselSzene()
+    IEnumerator ChangeScene()
     {
-        SceneManager.LoadScene(sceneName);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Room1");
     }
 }

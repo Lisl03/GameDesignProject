@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0f2d25007fc9c4612b8ad906e854b65c
+guid: e7ea4244239634c77a01300dce32976b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2095959242739621012
-    second: Unbenanntes_Projekt 55_0
+      213: 6617821729513329217
+    second: Unbenanntes_Projekt 56_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Unbenanntes_Projekt 55_0
+      name: Unbenanntes_Projekt 56_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c63eec07c28a9e2e0800000000000000
-      internalID: -2095959242739621012
+      spriteID: 142d08edcc937db50800000000000000
+      internalID: 6617821729513329217
       vertices: []
       indices: 
       edges: []

@@ -4,54 +4,68 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public GameObject inventoryUI; // Das Panel für das Inventar
-    public List<Image> itemSlots = new List<Image>(); // Die UI-Slots für Items
-    private List<Sprite> items = new List<Sprite>(); // Die gespeicherten Items
-    private bool isOpen = false;
+    public static InventoryManager Instance; // Singleton für globalen Zugriff
+    public GameObject inventoryUI; // Das gesamte Inventar-UI
 
-    void Start()
+    // UI-Image-Felder für die vordefinierten Inventar-Slots
+    public Image itemSlot_DollDress;
+    public Image itemSlot_Vinyl;
+    public Image itemSlot_Flashlight;
+    public Image itemSlot_Photo;
+    public Image itemSlot_Key;
+
+    private Dictionary<string, Image> itemSlots = new Dictionary<string, Image>();
+    private HashSet<string> collectedItems = new HashSet<string>(); // Gesammelte Items
+
+    private void Awake()
     {
-        // Stelle sicher, dass das Inventar beim Start ausgeblendet ist
-        if (inventoryUI != null)
+        if (Instance == null)
         {
-            inventoryUI.SetActive(false);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.LogError("inventoryUI wurde nicht zugewiesen! Bitte im Inspector setzen.");
+            Destroy(gameObject);
+        }
+
+        // Inventar beim Start unsichtbar machen
+        inventoryUI.SetActive(false);
+
+        // Verknüpfe Item-Namen mit den UI-Images
+        itemSlots.Add("DollDress", itemSlot_DollDress);
+        itemSlots.Add("Vinyl", itemSlot_Vinyl);
+        itemSlots.Add("Flashlight", itemSlot_Flashlight);
+        itemSlots.Add("Photo", itemSlot_Photo);
+        itemSlots.Add("Key", itemSlot_Key);
+
+        // Stelle sicher, dass die Slots anfangs leer sind
+        foreach (var slot in itemSlots.Values)
+        {
+            slot.enabled = false; // Unsichtbar machen
         }
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I)) // "I" zum Öffnen/Schließen
         {
-            isOpen = !isOpen;
-            inventoryUI.SetActive(isOpen);
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
         }
     }
 
-    public void AddItem(Sprite itemSprite)
+    public void CollectItem(string itemName)
     {
-        if (items.Count < itemSlots.Count)
+        if (itemSlots.ContainsKey(itemName) && !collectedItems.Contains(itemName))
         {
-            items.Add(itemSprite);
-            UpdateUI();
-        }
-        else
-        {
-            Debug.Log("Inventar ist voll!");
+            collectedItems.Add(itemName);
+            itemSlots[itemName].sprite = Resources.Load<Sprite>("Sprites/" + itemName);
+            itemSlots[itemName].enabled = true; // Sichtbar machen
         }
     }
 
-    void UpdateUI()
+    public bool HasItem(string itemName)
     {
-        for (int i = 0; i < itemSlots.Count; i++)
-        {
-            if (i < items.Count)
-                itemSlots[i].sprite = items[i]; // Sprite setzen
-            else
-                itemSlots[i].sprite = null; // Leeren Slot zurücksetzen
-        }
+        return collectedItems.Contains(itemName);
     }
 }
