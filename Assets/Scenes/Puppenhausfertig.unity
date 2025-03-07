@@ -1020,7 +1020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1828484104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,15 +1205,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1862564551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf236b2479714dbd953a933692f88ce, type: 3}
+  m_Script: {fileID: 11500000, guid: bde62cb1abecbd343b54986783f72992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 1087610466}
-  itemSlot_DollDress: {fileID: 1629080621}
-  itemSlot_Vinyl: {fileID: 206359645}
-  itemSlot_Flashlight: {fileID: 706195825}
-  itemSlot_Photo: {fileID: 1850396741}
-  itemSlot_Key: {fileID: 206359645}
 --- !u!4 &1862564553
 Transform:
   m_ObjectHideFlags: 0

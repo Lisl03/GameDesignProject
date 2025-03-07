@@ -19,7 +19,7 @@ public class ButtonClickHandler : MonoBehaviour
     {
         myButton.interactable = false;
         newImage.gameObject.SetActive(true);
-        InventoryManager.Instance.CollectItem("Flashlight"); // Item in UI anzeigen
+        InventoryManager.Instance.AddItem("Flashlight"); // Item in UI anzeigen
         StartCoroutine(ChangeScene());
     }
 
