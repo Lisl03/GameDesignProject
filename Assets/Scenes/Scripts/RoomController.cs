@@ -6,48 +6,48 @@ public class RoomController : MonoBehaviour
     private Vector2 offset;
     private bool isDragging;
 
-    public Vector2 correctPosition;  // Die korrekte Position des Raums
-    private Vector2 originalPosition; // Ursprüngliche Position des Raums
+    public Vector2 correctPosition;  // The correct position for the room
+    private Vector2 originalPosition; // The original position of the room
 
-    public bool IsPlacedCorrectly { get; private set; } = false; // Status, ob der Raum korrekt platziert ist
+    public bool IsPlacedCorrectly { get; private set; } = false; // Whether the room is placed correctly
 
-    private SpriteRenderer spriteRenderer; // Referenz auf den SpriteRenderer des Raumes
-    private int defaultSortingOrder = 0;   // Standard-Sorting Order
+    private SpriteRenderer spriteRenderer; // Reference to the room's SpriteRenderer
+    private int defaultSortingOrder = 0;   // Default sorting order for rendering
 
     void Start()
     {
-        // Initialisiere den Rigidbody2D und setze ihn auf kinematisch
+        // Initialize the Rigidbody2D and set it to kinematic
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.isKinematic = true;  // Verhindert, dass die Physik auf das Objekt angewendet wird
+        rb2d.bodyType = RigidbodyType2D.Kinematic;  // Set to kinematic using bodyType
 
-        // Speichere die Ausgangsposition
+        // Store the original position of the room
         originalPosition = rb2d.position;
 
-        // Hole die SpriteRenderer-Komponente des Raumes
+        // Get the SpriteRenderer component of the room
         spriteRenderer = GetComponent<SpriteRenderer>();
         
-        // Speichere die Standard-Sorting Order
+        // Store the default sorting order for rendering
         defaultSortingOrder = spriteRenderer.sortingOrder;
     }
 
     void Update()
     {
-        // Wenn der Raum gerade gezogen wird
+        // If the room is being dragged
         if (isDragging)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            rb2d.position = mousePosition + offset;
+            rb2d.position = mousePosition + offset; // Move the room with the mouse
         }
     }
 
     void OnMouseDown()
     {
-        // Setze den Offset, wenn der Raum mit der Maus angeklickt wird
+        // Set the offset when the room is clicked
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         offset = (Vector2)transform.position - mousePosition;
         isDragging = true;
 
-        // Wähle den Raum aus und setze ihn nach vorne
+        // Select the room (bring it to the front)
         SelectRoom();
     }
 
@@ -55,32 +55,32 @@ public class RoomController : MonoBehaviour
     {
         isDragging = false;
 
-        // Überprüfe, ob der Raum in der richtigen Position ist
+        // Check if the room is in the correct position
         if (Vector2.Distance(rb2d.position, correctPosition) < 1f)
         {
-            rb2d.position = correctPosition;  // Setze den Raum an die Zielposition
-            IsPlacedCorrectly = true; // Markiere den Raum als korrekt platziert
-            Debug.Log("Raum korrekt platziert!");
+            rb2d.position = correctPosition;  // Set the room to the correct position
+            IsPlacedCorrectly = true; // Mark the room as correctly placed
+            Debug.Log("Room correctly placed!");
         }
         else
         {
-            rb2d.position = originalPosition;  // Setze den Raum zurück, wenn er nicht richtig ist
+            rb2d.position = originalPosition;  // Reset the room if it is not correct
             IsPlacedCorrectly = false;
         }
 
-        // Setze die Sorting Order zurück, wenn der Raum abgesetzt wurde
+        // Reset the sorting order after the room is released
         DeselectRoom();
     }
 
-    // Wähle den Raum aus und setze ihn nach vorne
+    // Bring the room to the front by adjusting its sorting order
     public void SelectRoom()
     {
-        spriteRenderer.sortingOrder = 10;  // Setze die Sorting Order auf einen höheren Wert, damit der Raum vorne ist
+        spriteRenderer.sortingOrder = 10;  // Set the sorting order to a higher value
     }
 
-    // Setze die Sorting Order zurück, wenn der Raum abgesetzt wurde
+    // Reset the sorting order when the room is released
     public void DeselectRoom()
     {
-        spriteRenderer.sortingOrder = defaultSortingOrder;  // Setze die Sorting Order auf den Standardwert
+        spriteRenderer.sortingOrder = defaultSortingOrder;  // Reset to the default sorting order
     }
 }
