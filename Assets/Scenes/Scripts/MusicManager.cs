@@ -3,18 +3,50 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     private static MusicManager instance; // Singleton-Instanz
+    private AudioSource audioSource;
+
+    public AudioClip normalMusic;
+    public AudioClip nightmareMusic;
 
     void Awake()
     {
-        // Überprüfen, ob bereits ein MusicManager existiert
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Destroy(gameObject); // Falls schon einer existiert, zerstöre das neue Musik-Objekt
+            Destroy(gameObject); // Verhindert doppelte MusicManager
+            return;
         }
-        else
+
+        instance = this;
+        DontDestroyOnLoad(gameObject); // Behalte Musik über Szenenwechsel hinweg
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
         {
-            instance = this; // Setze die Instanz
-            DontDestroyOnLoad(gameObject); // Verhindere, dass das Musik-Objekt beim Szenenwechsel zerstört wird
+            audioSource = gameObject.AddComponent<AudioSource>(); // Falls kein AudioSource vorhanden ist
+        }
+
+        audioSource.loop = true;
+        PlayNormalMusic();
+    }
+
+    public void PlayNormalMusic()
+    {
+        if (audioSource.clip != normalMusic)
+        {
+            audioSource.Stop();
+            audioSource.clip = normalMusic;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayNightmareMusic()
+    {
+        if (audioSource.clip != nightmareMusic)
+        {
+            audioSource.Stop();
+            audioSource.clip = nightmareMusic;
+            audioSource.Play();
         }
     }
 }
+ 

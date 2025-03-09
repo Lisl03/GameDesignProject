@@ -54,13 +54,22 @@ public class PickupItem : MonoBehaviour
 
     private void TriggerAnimations()
     {
-        // Speichern der Position des Charakters vor dem Szenenwechsel
+        MusicManager musicManager = FindObjectOfType<MusicManager>();
+    if (musicManager != null)
+    {
+        musicManager.PlayNightmareMusic();
+    }
+        // 🛑 Speicher die aktuelle Position des Spielers
         Vector3 playerPosition = GameObject.FindWithTag("Player").transform.position;
         PlayerPrefs.SetFloat("PlayerPosX", playerPosition.x);
         PlayerPrefs.SetFloat("PlayerPosY", playerPosition.y);
         PlayerPrefs.SetFloat("PlayerPosZ", playerPosition.z);
+        PlayerPrefs.Save(); // Stelle sicher, dass die Werte gespeichert werden
 
-        // Raumanimation sichtbar machen und starten
+        // 🔥 Musik ändern zur Albtraum-Musik
+        FindObjectOfType<MusicManager>()?.PlayNightmareMusic(); 
+
+        // 🎭 Raumanimation sichtbar machen und starten
         if (animationObject != null)
         {
             animationObject.SetActive(true);
@@ -77,7 +86,7 @@ public class PickupItem : MonoBehaviour
             Debug.LogWarning("Room Animator ist nicht zugewiesen!");
         }
 
-        // Charakteranimation starten
+        // 🎬 Charakteranimation starten
         if (characterAnimator != null)
         {
             characterAnimator.SetTrigger(characterAnimationTrigger);
@@ -87,26 +96,24 @@ public class PickupItem : MonoBehaviour
             Debug.LogWarning("Character Animator ist nicht zugewiesen!");
         }
 
-        // Verzögerten Szenenwechsel starten
+        // ⏳ Verzögerten Szenenwechsel starten
         Invoke(nameof(SwitchScene), 3f);
     }
 
     private void SwitchScene()
     {
-        // Szene wechseln
+        Debug.Log("Wechsle zur Szene: " + nextSceneName);
         SceneManager.LoadScene(nextSceneName);
     }
 
-    // Diese Methode wird durch ein Event in der Animation aufgerufen
     public void OnAnimationComplete()
     {
-        // Optional: Nach der Animation den Room-Animator wieder deaktivieren
         if (roomAnimator != null)
         {
             roomAnimator.gameObject.SetActive(false);
         }
 
-        // Szene wechseln, nachdem die Animation abgeschlossen ist
+        // 🎭 Wechsel in die Nightmare-Szene
         SwitchScene();
     }
 }
