@@ -38,5 +38,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VinylPlayer.unity
     guid: e75fd09d122ee42cdab8bdfec5a18e78
+  - enabled: 1
+    path: Assets/Scenes/Nightmare1.unity
+    guid: 58d0653f1b2654a62b08450e9b74bc0b
+  - enabled: 1
+    path: Assets/Scenes/FlurNightmare.unity
+    guid: 09260bbffd39c4c098bb6fbd84ea0bef
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
