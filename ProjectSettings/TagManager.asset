@@ -12,6 +12,7 @@ TagManager:
   - ZielbereichAbstell
   - SpecialObject
   - Cabinet
+  - targetObject
   layers:
   - Default
   - TransparentFX

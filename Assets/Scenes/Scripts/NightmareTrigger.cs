@@ -26,12 +26,13 @@ public class PickupItem : MonoBehaviour
     }
 
     private void Update()
+{
+    // Wenn der Spieler in Reichweite ist und 'Q' drückt
+    if (isPlayerInRange)
     {
-        // Wenn der Spieler in Reichweite ist und 'Q' drückt
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.Q))
-        {
-            TriggerAnimations(); // Animationen starten
-        }
+        TriggerAnimations(); // Animationen starten
+    }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

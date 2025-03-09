@@ -1107,8 +1107,8 @@ GameObject:
   - component: {fileID: 815787511}
   - component: {fileID: 815787512}
   - component: {fileID: 815787513}
-  - component: {fileID: 815787514}
   - component: {fileID: 815787515}
+  - component: {fileID: 815787516}
   m_Layer: 0
   m_Name: Dooropen
   m_TagString: Untagged
@@ -1202,8 +1202,21 @@ MonoBehaviour:
   closedDoorSprite: {fileID: 1979239529630283305, guid: 4727c96aef2e641b488d75d7253560fd, type: 3}
   detectionRadius: 2
   player: {fileID: 916375657}
---- !u!61 &815787514
-BoxCollider2D:
+--- !u!114 &815787515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815787510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d39314f3203c4fb7b0a8837e4279f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: FlurNightmare
+--- !u!68 &815787516
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1232,35 +1245,19 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.0507476}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.51, y: 11.471228}
-    newSize: {x: 6.51, y: 11.471228}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 6.51, y: 9.369732}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
---- !u!114 &815787515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815787510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d39314f3203c4fb7b0a8837e4279f42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: FlurNightmare
+  m_Points:
+  - {x: 1.6836994, y: -3.5518043}
+  - {x: 3.4579616, y: -4.972526}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &841131172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,9 +1447,10 @@ GameObject:
   - component: {fileID: 916375659}
   - component: {fileID: 916375658}
   - component: {fileID: 916375660}
+  - component: {fileID: 916375661}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1652,6 +1650,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6473f2c2c213d43a08dfc805449aa128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &916375661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916375653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906c422c1f8924cf68132967a0539b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementAudioSource: {fileID: 1316225772}
+  movementThreshold: 0.1
 --- !u!1 &1038714716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,7 +2159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1316225773}
   - component: {fileID: 1316225772}
-  - component: {fileID: 1316225774}
   m_Layer: 0
   m_Name: footstep
   m_TagString: Untagged
@@ -2267,20 +2278,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1316225774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1316225771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906c422c1f8924cf68132967a0539b14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementAudioSource: {fileID: 1316225772}
-  movementThreshold: 0.1
 --- !u!1 &1335419784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,7 +3324,6 @@ GameObject:
   - component: {fileID: 1814490416}
   - component: {fileID: 1814490418}
   - component: {fileID: 1814490417}
-  - component: {fileID: 1814490419}
   m_Layer: 0
   m_Name: Doorclosed
   m_TagString: Untagged
@@ -3420,52 +3416,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1814490419
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814490415}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 2.5498235, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: -0.8229144, y: 0.49356386}
-    oldSize: {x: 1.81, y: 11.811264}
-    newSize: {x: 1.81, y: 11.811264}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.5992695, y: 11.811264}
-  m_EdgeRadius: 0
 --- !u!1 &1833186092
 GameObject:
   m_ObjectHideFlags: 0
